@@ -30,10 +30,10 @@ $(document).ready(function () {
     dataType : "jsonp",
     success : function(parsed_json) {
       console.log(parsed_json);
-      $.each(parsed_json['data'], function(i,item) {
-        pictures[i][0] = item['likes']['count'];
-        pictures[i][1] = item['link'];
-      })
+      for(i = 0; i < 20; i++) {
+        pictures[i][0] = parsed_json['data'][i]['likes']['count'];
+        pictures[i][1] = item['data'][i]['link'];
+      }
     }
   });
 
