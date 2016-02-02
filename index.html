@@ -18,8 +18,9 @@ $(document).ready(function () {
 
   var max = time - 86400000;
 
-  var myurl = "https://api.instagram.com/v1/media/search?access_token=2872376287.1fb234f.03b6236d665645a1a43a96fc70ad2fb5&lat=40.248197&lng=-111.649214&max_timestamp=";
-  myurl += max;
+  var myurl = "https://api.instagram.com/v1/media/search?access_token=2872376287.1fb234f.03b6236d665645a1a43a96fc70ad2fb5&lat=40.248197&lng=-111.649214";
+  /*myurl += max;
+  &max_timestamp=*/
   myurl += "&distance=2000";
 
   console.log(myurl);
