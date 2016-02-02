@@ -29,9 +29,9 @@ $(document).ready(function () {
     dataType : "jsonp",
     success : function(parsed_json) {
       console.log(parsed_json);
-      $.each(parsed_json[data], function(i,item) {
-        pictures[i][0] = item[likes][count];
-        pictures[i][1] = item[link];
+      $.each(parsed_json['data'], function(i,item) {
+        pictures[i][0] = item['likes']['count'];
+        pictures[i][1] = item['link'];
       })
     }
   });
