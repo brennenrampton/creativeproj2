@@ -3,12 +3,15 @@
 <head>
 	<title>BYU Photo Board</title>
   	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="index.css">
+	
 	<script type="text/javascript" src="index.js"></script>
 </head>
 <body>
-	<div id="header">
+	<div class="jumbotron">
 		<h1>BYU Provo Photo Board</h1>
+		<h2>The top Instagram photos from around BYU campus, exactly 24 hours in the past</h2>
 	</div>
 
 	<div id="pictures">
@@ -62,12 +65,32 @@ $(document).ready(function() {
 			}
 
 			console.log(pictures);
+			insertionSort(pictures);
+			console.log(pictures);
 			writePictures(pictures);
 		}
 	});
 
 	
 });
+
+function insertionSort(unsortedList) {
+  var len = unsortedList.length;
+  
+  for(var i = 0; i < len; i++) {
+    var tmp = unsortedList[i]; //Copy of the current element.
+    /*Check through the sorted part and compare with the 
+    number in tmp. If large, shift the number*/
+    for(var j = i - 1; j >= 0 && (unsortedList[j][0] < tmp[0]); j--) {
+      //Shift the number
+      unsortedList[j+1] = unsortedList[j];
+    }
+    //Insert the copied number at the correct position
+    //in sorted part.
+    unsortedList[j+1] = tmp;
+  }
+}
+
 /*
 Pass the function an array of image URLs and it will print them into the table in the html doc.
 */
@@ -83,7 +106,7 @@ Pass the function an array of image URLs and it will print them into the table i
 			if (i % 5 == 0) {
 				pictureShow += "<tr>"
 			}
-			pictureShow += "<td><a href="+imageArray[i][2]+"><img src=" + imageArray[i][1] + "></a></td>";
+			pictureShow += "<td>" + "<a href="+imageArray[i][2]+">" + "<img src=" + imageArray[i][1] + ">" + "</a>" + "</td>";
 			if (i % 5 == 4) {
 				pictureShow += "</tr>"
 			}
